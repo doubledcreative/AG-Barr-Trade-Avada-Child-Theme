@@ -1,0 +1,210 @@
+/*
+Theme Name: Avada Child Theme - Teal
+Author: Tom Brookes & Tom Dent
+Author URI: http://www.doubledcreative.com
+*/
+
+/* Less Mixins */
+
+.transition (@transition: all 0.2s ease-in-out) {
+	-webkit-transition:@transition;
+	-moz-transition:@transition;
+	-o-transition:@transition;
+	transition:@transition;
+}
+
+.transform(@string){
+	-webkit-transform:@string;
+	-moz-transform:@string;
+	-ms-transform:@string;
+	-o-transform:@string;
+	transform:@string;
+}
+
+.border-radius (@border-radius: 0px) {
+	-webkit-border-radius:@border-radius;
+	-moz-border-radius:@border-radius;
+	border-radius:@border-radius;
+}
+
+.box-shadow (@box-shadow: rgba(0,0,0,0)) {
+	-webkit-box-shadow:@box-shadow;
+	-moz-box-shadow:@box-shadow;
+	box-shadow:@box-shadow;
+}
+
+.bg-clip(){
+	-moz-background-clip:padding!important;
+	-webkit-background-clip:padding!important;
+	background-clip:padding-box!important;
+}
+
+.gradient (@degree: -45deg, @startColor: #000, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, @degree, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(@degree, @startColor, @endColor);
+	background: -moz-linear-gradient(@degree, @startColor, @endColor);
+	background: -ms-linear-gradient(@degree, @startColor, @endColor);
+	background: -o-linear-gradient(@degree, @startColor, @endColor);
+}
+
+.uppercase(){text-transform:uppercase!important;}
+ 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Colours */
+
+@white:  	#FFF!important;		/* White			*/
+@black:		#000!important;		/* Black 			*/
+@blue:		#122E43!important;	/* Dark Blue 		*/
+@orange:	#f7941d!important;	/* Orange			*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* MAIN */
+
+body{-webkit-font-smoothing:subpixel-antialiased!important;overflow:hidden;}
+a:hover{.transition (@transition: all 0.2s ease-in-out);}
+.hover-type-zoomin:hover{
+	.fusion-column-inner-bg-image{opacity:1!important;}
+}
+iframe{border:none!important;}
+
+.fusion-middle-logo-menu-logo{display:none;}
+.teal-who{box-shadow:0 -20px 20px rgba(0,0,0,0.1);}
+.teal-what{box-shadow:0 20px 20px rgba(0,0,0,0.1);}
+
+.teal-color-grad, .fusion-header{.gradient (@degree: -45deg, @startColor: #00749b, @endColor: #00acab);}
+.teal-mono-grad{.gradient (@degree: -45deg, @startColor: #FFFFFF, @endColor: #f0f0f0);}
+.teal-header-thin{padding-left:10%;padding-right:10%;}
+.teal-logo-footer{width:100px;}
+.teal-icon{background:#eee;width:60%;height:auto;margin:0 20% 20px 20%!important;.border-radius (@border-radius:200px);}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* NAVIGATION */
+
+.fusion-header{height:80px!important;
+	.fusion-main-menu{
+		ul{margin-top:22px;
+			li{
+				a{line-height:22px!important;height:auto!important;color:@white;padding:6px 25px;.border-radius (@border-radius: 20px);
+					&:hover{background:@orange;}
+				}
+			}
+		}
+	}
+}
+
+
+
+.fusion-is-sticky .fusion-main-menu .current-menu-ancestor > a, .fusion-is-sticky .fusion-main-menu .current-menu-item > a, .fusion-is-sticky .fusion-main-menu .current-menu-item > a:before, .fusion-is-sticky .fusion-main-menu .current-menu-parent > a, .fusion-is-sticky .fusion-main-menu .current_page_item > a, .fusion-main-menu .current-menu-ancestor > a, .fusion-main-menu .current-menu-item > a, .fusion-main-menu .current-menu-item > a:before, .fusion-main-menu .current-menu-parent > a, .fusion-main-menu .current_page_item > a{background:#036b8b;}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* MAIN */
+
+.teal-top{
+	.fullwidth-overlay{.gradient (@degree: -45deg, @startColor: #004661, @endColor: #04121c);opacity:0.9!important;}
+	.teal-logo{width:240px;margin-bottom:10px;padding:20px;}
+	.teal-main-h1{padding:0 30%!important;
+		h1{color:@white;text-shadow:0 0 30px rgba(0,0,0,0.5);}
+	}
+}
+
+.teal-button{font-family:"Source Sans Pro";font-weight:600;background:@orange;margin:0 auto!important;font-size:22px!important;line-height:26px!important;padding:14px 60px!important;.border-radius (@border-radius: 40px)!important;border-color:rgba(255,255,255,0.4)!important;.bg-clip();
+		&:hover{.transition();background-color:@white!important;color:@orange;border-color:@white!important;}
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* GRAVITY FORMS */
+
+.gform_wrapper{margin:0 auto!important;/*width:60%;*/
+	.gform_body{width:100%!important;
+		.gform_fields{
+			.gfield{
+				.ginput_container{
+					input, textarea{padding:15px 20px!important;height:auto!important;margin:0!important;border:5px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(255,255,255,0.4)!important;.bg-clip();font-size:22px;color:@blue;
+						&:focus{outline:none;background:#FFFDE4!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
+					}
+					select{padding:15px 20px!important;height:64px!important;margin:0!important;border:5px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(255,255,255,0.4)!important;.bg-clip();font-size:22px;color:@blue;
+						option{color:@blue;}
+					}
+					textarea{.border-radius (@border-radius: 10px);padding-top:25px!important;font-family:"Source Sans Pro";font-size:22px;
+						&:focus{outline:none;background:#FFFDE4!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
+					}
+					.name_first, .name_last{
+						label{display:none;}
+					}
+				}
+				.ginput_container_date{
+					.gfield_date_day, .gfield_date_month, .gfield_date_year{max-width:33%!important;width:100%;
+						input{width:100%;}
+						label{display:none;}
+					}
+				}
+				label{color:@white;font-size:22px;font-weight:400;}	
+			}
+		}
+	}
+	.gform_footer{width:100%;display:block;margin:40px 0 0 0!important;padding:0!important;
+		input[type=submit]{font-family:"Source Sans Pro";font-weight:600;background:@orange;display:block!important;margin:0 auto!important;font-size:22px!important;line-height:26px!important;padding:14px 60px!important;.border-radius (@border-radius: 40px)!important;border-color:rgba(255,255,255,0.4)!important;.bg-clip();
+			&:hover{.transition();background-color:@white!important;color:@orange;border-color:@white!important;}
+		}
+	}
+}
+
+.kd-contact-form{
+	.gform_wrapper{width:80%!important;}
+}
+
+.teal-form-html{padding:15px 20px!important;margin:0!important;border:5px solid!important;.border-radius (@border-radius: 10px);border-color:#122E43!important;.bg-clip();font-size:22px;color:@blue;background:#FFFDE4!important;width:97.5%!important;}
+.teal-modal-button{padding:0;margin:-74px -100px 0 0!important;display:inline-block;float:right;}
+
+::-webkit-input-placeholder{color:@blue;}
+:-moz-placeholder{color:@blue;}
+::-moz-placeholder{color:@blue;}
+:-ms-input-placeholder{color:@blue;}
+.placeholder{color:@blue;}
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////// */
+/* MEDIA QUERIES //////////////////////////////////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+@media only screen and (max-width: 800px) {
+
+	header{display:none!important;}
+	
+	.teal-top{
+		.teal-main-h1{padding:0 10%!important;}
+	}
+	
+	.teal-header-thin{padding-left:0;padding-right:0;
+		h1{font-size:24px;line-height:34px;}
+	}
+	
+	.fusion-title{margin-bottom:30px!important;
+		h2{font-size:36px!important;line-height:44px!important;}
+		h6{font-size:24px!important;line-height:34px!important;}
+	}
+	
+	.teal-form{
+		.fusion-column-wrapper{padding:0!important;}
+	}
+	
+	.fusion-footer-widget-area{
+		p{font-size:16px;line-height:26px;}
+	}
+	
+	.gform_wrapper .gform_body .gform_fields .gfield .ginput_container input, .gform_wrapper .gform_body .gform_fields .gfield .ginput_container textarea, .gform_wrapper .gform_body .gform_fields .gfield .ginput_container select{padding:8px 15px!important;font-size:18px!important;}
+}
+
+@media only screen and (max-width: 500px) {
+	
+	.teal-full{padding-left:0!important;padding-right:0!important;}
+	
+}
