@@ -44,7 +44,9 @@ return '<div class="divider"></div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 /* Remove Dates from SEO on Pages */
+
 
 function wpd_remove_modified_date(){
     if( is_page() ){
@@ -61,18 +63,38 @@ add_action( 'template_redirect', 'wpd_remove_modified_date' );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 /* Remove Query String */
 
+
 function _remove_script_version( $src ){
-	$parts = explode( '?', $src );
-	return $parts[0];
+  $parsed = parse_url($src);
+
+  if (isset($parsed['query'])) {
+    parse_str($parsed['query'], $qrystr);
+    if (isset($qrystr['ver'])) {
+      unset($qrystr['ver']); 
+    }
+    $parsed['query'] = http_build_query($qrystr);
+  }
+  // return http_build_url($parsed); // elegant but not always available
+
+  $src = '';
+  $src .= (!empty($parsed['scheme'])) ? $parsed['scheme'].'://' : '';
+  $src .= (!empty($parsed['host'])) ? $parsed['host'] : '';
+  $src .= (!empty($parsed['path'])) ? $parsed['path'] : '';
+  $src .= (!empty($parsed['query'])) ? '?'.$parsed['query'] : '';
+
+  return $src;
 }
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*** Add Field Visibility Section to Gravity Forms ***/		
+
+/* Add Field Visibility Section to Gravity Forms */		
+
 		
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
@@ -80,16 +102,3 @@ add_filter("gform_init_scripts_footer", "init_scripts");
 function init_scripts() {
 return true;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/* Defer Parsing of Javascript 
-
-if (!(is_admin() )) {
-function defer_parsing_of_js ( $url ) {
-if ( FALSE === strpos( $url, '.js' ) ) return $url;
-if ( strpos( $url, 'jquery.js' ) ) return $url;
-return "$url' defer ";
-}
-add_filter( 'clean_url', 'defer_parsing_of_js', 11, 1 );
-}*/
