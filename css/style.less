@@ -1,8 +1,25 @@
-/*
-Theme Name: Avada Child Theme - AG Barr Trade
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////
+
+AG Barr Trade
+
+Theme Name: Avada Child Theme
 Author: Tom Brookes & Tom Dent
 Author URI: http://www.doubledcreative.com
-*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Contents
+
+- Less Mixins
+- Site Colours
+- Gravity Forms
+- Media Queries
+	- 800px
+	- 500px
+
+//////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* Less Mixins */
 
@@ -60,20 +77,23 @@ Author URI: http://www.doubledcreative.com
 @white:  	#FFF!important;		/* White				*/
 @black:		#000!important;		/* Black 				*/
 @blue:		#24256E!important;	/* AG Barr Logo Blue	*/
-@red:		#E30520!important;	/* AG Barr Logo Red		*/
+@red:		#E2251D!important;	/* AG Barr Red			*/
+@grey1:		#F7F7F7!important;
+@slate1:	#58586b!important;	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /* MAIN */
 
-
-body{-webkit-font-smoothing:subpixel-antialiased!important;}
-a:hover{.transition (@transition: all 0.2s ease-in-out);}
+html{background:@grey1;}
+body{-webkit-font-smoothing:subpixel-antialiased!important;background:@grey1;}
+a:hover{.transition (@transition: all 0.2s ease-in-out);border-bottom:1px dotted #58586b;}
 .hover-type-zoomin:hover{
 	.fusion-column-inner-bg-image{opacity:1!important;}
 }
 iframe{border:none!important;}
+.agb_svg{width:100%;height:auto;}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,16 +104,16 @@ iframe{border:none!important;}
 .gform_wrapper{margin:0 auto!important;
 	.gform_body{width:100%!important;
 		.gform_fields{
-			.gfield{
+			.gfield{padding:0!important;margin-top:0!important;
 				.ginput_container{
-					input, textarea{padding:15px 20px!important;height:auto!important;margin:0!important;border:5px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(255,255,255,0.4)!important;.bg-clip();font-size:22px;color:@blue;
-						&:focus{outline:none;background:#FFFDE4!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
+					input, textarea{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
+						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:#ffe884!important;color:@blue;}
 					}
-					select{padding:15px 20px!important;height:64px!important;margin:0!important;border:5px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(255,255,255,0.4)!important;.bg-clip();font-size:22px;color:@blue;
+					select{padding:18px 25px!important;height:70px!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px;color:@slate1;
 						option{color:@blue;}
 					}
 					textarea{.border-radius (@border-radius: 10px);padding-top:25px!important;font-size:22px;
-						&:focus{outline:none;background:#FFFDE4!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
+						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
 					}
 					.name_first, .name_last{
 						label{display:none;}
@@ -105,22 +125,31 @@ iframe{border:none!important;}
 						label{display:none;}
 					}
 				}
-				label{color:@white;font-size:22px;font-weight:400;}	
+				label{color:@white;font-size:22px;font-weight:400;}
+				.gfield_password_strength{border-bottom-width:1px;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;}
 			}
 		}
 	}
-	.gform_footer{width:100%;display:block;margin:40px 0 0 0!important;padding:0!important;
-		input[type=submit]{font-weight:600;background:@red;display:block!important;margin:0 auto!important;font-size:22px!important;line-height:26px!important;padding:14px 60px!important;.border-radius (@border-radius: 40px)!important;border-color:rgba(255,255,255,0.4)!important;.bg-clip();
-			&:hover{.transition();background-color:@blue!important;color:@white;border-color:@blue!important;}
+	.gform_footer{width:100%;display:block;margin:10px 0 0 0!important;padding:0!important;
+		input[type=submit]{font-family:"PT Serif";background:@blue;display:block!important;margin:0 auto!important;font-size:20px!important;line-height:28px!important;padding:18px 80px!important;.border-radius (@border-radius: 60px)!important;border-color:rgba(255,255,255,1)!important;.bg-clip();
+			&:hover{.transition();background-color:@red!important;color:@white;border-color:@red!important;}
 		}
 	}
 }
 
-::-webkit-input-placeholder{color:@blue;}
-:-moz-placeholder{color:@blue;}
-::-moz-placeholder{color:@blue;}
-:-ms-input-placeholder{color:@blue;}
-.placeholder{color:@blue;}
+/* Float Left and Right for Single Line Text Fields */
+
+.grav_half_left, .grav_half_right{width:49%;clear:none!important;}
+.grav_half_left{float:left;}
+.grav_half_right{float:right;}
+
+/* Placeholder Font Colour */
+
+::-webkit-input-placeholder{color:@slate1;}
+:-moz-placeholder{color:@slate1;}
+::-moz-placeholder{color:@slate1;}
+:-ms-input-placeholder{color:@slate1;}
+.placeholder{color:@slate1;}
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 /* MEDIA QUERIES //////////////////////////////////////////////////////////////////////////////// */
