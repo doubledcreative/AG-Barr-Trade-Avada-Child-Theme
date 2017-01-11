@@ -102,3 +102,41 @@ add_filter("gform_init_scripts_footer", "init_scripts");
 function init_scripts() {
 return true;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Membership 2 */		
+
+/*function wpmu_ms_form_placeholder() {
+    ?>
+    <script type="text/javascript">
+    jQuery(function($) {
+         $('#first_name').attr("placeholder", "First Name");
+	     $('#last_name').attr("placeholder", "Surname");
+	     $('#username').attr("placeholder", "Username");
+	     $('#email').attr("placeholder", "Your Email Address");
+	     $('#password').attr("placeholder", "Password");
+	     $('#password2').attr("placeholder", "Verify Password");
+
+    });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'wpmu_ms_form_placeholder');*/
+
+add_filter('ms_frontend_handle_registration', '__return_false');
+
+add_action( 'gform_user_registered', 'pi_gravity_registration_autologin', 10, 4 );
+
+	function pi_gravity_registration_autologin( $user_id, $user_config, $entry, $password ) {
+	$user = get_userdata( $user_id );
+	$user_login = $user->user_login;
+	$user_password = $password;
+	
+	wp_signon( array(
+	'user_login' => $user_login,
+	'user_password' => $user_password,
+	'remember' => false
+	) );
+}
