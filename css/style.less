@@ -83,6 +83,7 @@ Contents
 @blue:		#24256E!important;	/* AG Barr Logo Blue	*/
 @red:		#E2251D!important;	/* AG Barr Red			*/
 @grey1:		#F7F7F7!important;
+@grey2:		#EBEBEB!important;
 @slate1:	#58586b!important;	
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,14 +91,78 @@ Contents
 
 /* Gloabl Styles */
 
-html{background:@grey1;}
+html{background:@grey1;overflow-y:auto!important;}
 body{-webkit-font-smoothing:subpixel-antialiased!important;background:@grey1;}
-a:hover{.transition (@transition: all 0.2s ease-in-out);border-bottom:1px dotted #58586b;}
+a:hover{.transition (@transition: all 0.2s ease-in-out);}
 .hover-type-zoomin:hover{
 	.fusion-column-inner-bg-image{opacity:1!important;}
 }
 iframe{border:none!important;}
 .agb_svg{width:100%;height:auto;}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* MEMBERS ACCOUNTS PAGES */
+
+/* Hide Membership 2 Elements */
+
+#account-membership, #account-invoices, #account-activity{display:none;}
+
+/* Main account info container */
+
+.agb-ac-container{}
+
+.agb-ac-info{
+	#account-profile{
+		h2{margin-bottom:31px;display:none;
+			a{background:@red;font-size:16px;line-height:40px;color:@white;padding:0 30px;.border-radius (@border-radius: 30px);
+				&:hover{background:@blue;}
+			}
+		}
+	}
+	table{width:100%;
+		tbody{background:@white;border:3px solid @grey2;
+			tr{border-bottom:1px solid @grey2;
+				.ms-label-title{border-right:1px solid @grey2;padding:10px 18px;width:30%;}
+				.ms-label-field{padding:10px 18px;font-weight:normal;}
+				.ms-points-history{padding:0;}
+			}
+		}
+	}
+	.mycred-table{margin-bottom:0;border:none!important;
+		.column-time, .column-creds, .column-entry{padding:10px;font-weight:normal;line-height:20px;font-size:16px;}
+		.column-time{border-right:1px solid @grey2;}
+		.column-creds{border-right:1px solid @grey2;}
+		thead{font-weight:bold;
+			th{border-bottom:none!important;font-weight:bold!important;}
+		}
+		tbody{border:none!important;}
+		tfoot{display:none;}
+		tr{
+			&:last-of-type{border-bottom:none!important;}
+		}
+	}
+}
+
+.mycred-history-wrapper{
+	.pagination-top{display:none;}
+	.pagination-bottom{margin:0;border-top:1px solid @grey2;
+		div{padding:0;
+			nav{
+				.pagination{display:block;float:none;margin:20px 20px 14px;padding:0;
+					li{display:inline-block;
+						a, span{background:@grey1;width:40px;line-height:20px;color:@slate1;padding:10px;margin:0 3px;display:inline-block;text-align:center;font-weight:bold;}
+						a{background:@grey2;
+							&:hover{background:@blue;color:@white;}
+						}
+						.current{border:none;}
+					}
+				}
+			}
+		}
+	}
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -113,15 +178,18 @@ iframe{border:none!important;}
 					input, textarea{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
 						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:#ffe884!important;color:@blue;}
 					}
-					select{padding:18px 25px!important;height:70px!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 10px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px;color:@slate1;
-						option{color:@blue;}
-					}
 					textarea{.border-radius (@border-radius: 10px);padding-top:25px!important;font-size:22px;
 						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
 					}
 					.name_first, .name_last{
 						label{display:none;}
 					}
+				}
+				.ginput_container_select{border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;background:@white;.bg-clip();padding-left:12px;
+					select{height:60px!important;margin:0!important;font-size:18px;color:@slate1;border:none;background:none;outline:none;width:97%;
+						option{color:@blue;}
+					}
+					&:focus{background:#fff8db!important;}
 				}
 				.ginput_container_date{
 					.gfield_date_day, .gfield_date_month, .gfield_date_year{max-width:33%!important;width:100%;
@@ -155,7 +223,23 @@ iframe{border:none!important;}
 :-ms-input-placeholder{color:@slate1;}
 .placeholder{color:@slate1;}
 
-.form-membership{
+/* Holding Page Form */
+
+.agb-holding-form{
+	.gf_progressbar_wrapper{display:none!important;}
+	.gform_page_footer{margin:0;padding:0;width:100%;border-top:none;
+		input{margin:0 auto!important;font-size:20px!important;line-height:28px!important;padding:16px 60px!important;display:block!important;.border-radius (@border-radius: 60px)!important;border-color:rgba(255,255,255,1)!important;.bg-clip();width:50%!important;
+			&:hover{.transition();background-color:@red!important;color:@white;border-color:@red!important;}
+		}
+		#gform_previous_button_1_10, #gform_previous_button_1{display:inline-block!important;float:left;width:49%!important;}
+		#gform_next_button_1_10, #gform_submit_button_1{display:inline-block!important;float:right;width:49%!important;}
+	}
+}
+
+
+
+
+/*.form-membership{
 	.ms-form-element{margin:0;
 		.wpmui-field-label{display:none;}
 		.wpmui-field-input{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
@@ -164,7 +248,10 @@ iframe{border:none!important;}
 	}
 }
 
-#account-membership, #account-invoices, #account-activity{display:none;}
+#account-membership, #account-invoices, #account-activity{display:none;}*/
+
+
+
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 /* MEDIA QUERIES //////////////////////////////////////////////////////////////////////////////// */
