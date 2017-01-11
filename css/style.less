@@ -1,11 +1,13 @@
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 AG Barr Trade
 
 Theme Name: Avada Child Theme
 Author: Tom Brookes & Tom Dent
 Author URI: http://www.doubledcreative.com
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -13,13 +15,16 @@ Author URI: http://www.doubledcreative.com
 Contents
 
 - Less Mixins
+- Global Styles
 - Site Colours
 - Gravity Forms
 - Media Queries
 	- 800px
 	- 500px
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////*/
+
 
 /* Less Mixins */
 
@@ -73,7 +78,6 @@ Contents
 
 /* Colours */
 
-
 @white:  	#FFF!important;		/* White				*/
 @black:		#000!important;		/* Black 				*/
 @blue:		#24256E!important;	/* AG Barr Logo Blue	*/
@@ -84,7 +88,7 @@ Contents
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/* MAIN */
+/* Gloabl Styles */
 
 html{background:@grey1;}
 body{-webkit-font-smoothing:subpixel-antialiased!important;background:@grey1;}
@@ -95,11 +99,11 @@ a:hover{.transition (@transition: all 0.2s ease-in-out);border-bottom:1px dotted
 iframe{border:none!important;}
 .agb_svg{width:100%;height:auto;}
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /* GRAVITY FORMS */
-
 
 .gform_wrapper{margin:0 auto!important;
 	.gform_body{width:100%!important;
@@ -150,6 +154,17 @@ iframe{border:none!important;}
 ::-moz-placeholder{color:@slate1;}
 :-ms-input-placeholder{color:@slate1;}
 .placeholder{color:@slate1;}
+
+.form-membership{
+	.ms-form-element{margin:0;
+		.wpmui-field-label{display:none;}
+		.wpmui-field-input{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
+			&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:#ffe884!important;color:@blue;}
+		}
+	}
+}
+
+#account-membership, #account-invoices, #account-activity{display:none;}
 
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 /* MEDIA QUERIES //////////////////////////////////////////////////////////////////////////////// */
