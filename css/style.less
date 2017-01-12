@@ -71,6 +71,96 @@ Contents
 }
 
 .uppercase(){text-transform:uppercase!important;}
+
+/* Form Input Style */
+
+.form-input (@width: 100%) {
+	padding: 19px 25px!important;
+	height:	auto!important;
+	margin: 0!important;
+	border:3px solid!important;
+	border-color:rgba(0,0,0,0.05)!important;
+	font-size:18px!important;
+	font-family:"PT Serif";
+	width: @width;
+	color: @slate1;
+	.bg-clip();
+	.border-radius (@border-radius: 50px);
+		&:focus{
+			background:@yellow1;
+			border-color:@yellow2;
+			box-shadow:none;
+			color:@blue;
+			.transition (@transition: all 0.5s ease-in-out);
+			outline:none;
+		}	
+}
+
+.form-select-outer (){
+	border:3px solid!important;
+	.border-radius (@border-radius: 50px);
+	border-color:rgba(0,0,0,0.05)!important;
+	background:@white;
+	.bg-clip();
+}
+
+.form-select (@width: 100%, @height: auto){
+	height: @height!important;
+	margin:0!important;
+	font-size:18px;
+	color:@slate1;
+	border:none;
+	background:none;
+	outline:none;
+	width: @width;
+}
+
+.form-submit (){
+	font-family:"PT Serif";
+	color:@white;
+	background:@blue;
+	display:block!important;
+	margin:0 auto!important;
+	font-size:20px!important;
+	line-height:28px!important;
+	padding:18px 80px!important;
+	.border-radius (@border-radius: 60px)!important;
+	border:none!important;
+	.bg-clip();
+		&:hover{
+			.transition();
+			background-color:@red!important;
+			color:@white;
+		}
+}
+
+/* H2 Header Standard */
+
+.agb-h2 (@margin-bottom: 31px, @line-height: 40px) {
+	color:@red;
+	margin-bottom:@margin-bottom;
+	font-size:24px;
+	line-height:@line-height;
+	border-bottom:none;
+	font-weight:bold;
+	text-transform:capitalize;
+}
+
+.agb-small-button (@width: 100px){
+	color:@white;
+    background:@red;
+    .border-radius (@border-radius: 60px);
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    width: @width;
+    	&:hover{
+	    	background:@blue;
+	    	.transition ();
+    	}
+}
  
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,13 +168,16 @@ Contents
 
 /* Colours */
 
-@white:  	#FFF!important;		/* White				*/
-@black:		#000!important;		/* Black 				*/
-@blue:		#24256E!important;	/* AG Barr Logo Blue	*/
-@red:		#E2251D!important;	/* AG Barr Red			*/
+@white:  	#FFF!important;		/* White                                                          */
+@black:		#000!important;		/* Black                                                          */
+@blue:		#24256E!important;	/* AG Barr Logo Blue                                              */
+@red:		#E2251D!important;	/* AG Barr Red                                                    */
 @grey1:		#F7F7F7!important;
 @grey2:		#EBEBEB!important;
-@slate1:	#58586b!important;	
+@slate1:	#58586b!important;
+@yellow1:	#FFF8db!important;	/* Form Focus BG                                                  */
+@yellow2:	#FFE884!important;	/* Form Focus Border                                              */
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,12 +191,13 @@ a:hover{.transition (@transition: all 0.2s ease-in-out);}
 	.fusion-column-inner-bg-image{opacity:1!important;}
 }
 iframe{border:none!important;}
+
 .agb_svg{width:100%;height:auto;}
+.agb-button{margin-top:20px;text-transform:capitalize;}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/* MEMBERS ACCOUNTS PAGES */
+/* MEMBERS ACCOUNTS PAGES */////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Hide Membership 2 Elements */
 
@@ -145,6 +239,8 @@ iframe{border:none!important;}
 	}
 }
 
+/* MyCred Points Elements */
+
 .mycred-history-wrapper{
 	.pagination-top{display:none;}
 	.pagination-bottom{margin:0;border-top:1px solid @grey2;
@@ -164,6 +260,44 @@ iframe{border:none!important;}
 	}
 }
 
+/* Edit User Profie Page */
+
+/* Remove stupid generated first name from top left */
+
+.page-id-50{
+	.post-content{margin-top:-20px;}
+}
+
+.ms-membership-form-wrapper{padding:100px 30% 60px;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f1f1f1+0,ffffff+100&1+0,0+100 */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(241,241,241,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(241,241,241,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  rgba(241,241,241,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	legend{.agb-h2 ();text-align:center;}
+	.ms-form-element{margin:0;
+		.wpmui-field-input, input[type=textbox]{.form-input ();}
+		.description{display:none;}
+		label{display:block;margin:15px 0 2px 24px;font-size:16px;color:@slate1;}
+		.wpmui-submit{.form-submit ();}
+		#cancel{.agb-small-button();}
+	}
+	.ms-form-element-website{display:none;}
+	.field-3{.form-select-outer ();margin-top:45px;
+		label{display:none!important;}
+		select{.form-select (@width: 98%, @height: 60px);}
+		&:before{content:"Regions";display:block;width:100%;margin-top:-34px;height:34px;padding-left:24px;font-size:16px;color:@slate1;}
+	}
+}
+
+/* Member Not Logged In */
+
+.agb-guest-login-container{display:none;}
+
+.ms-guest{
+	.agb-ac-container{display:none;}
+	.agb-guest-login-container{display:inline;}
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -175,9 +309,7 @@ iframe{border:none!important;}
 		.gform_fields{
 			.gfield{padding:0!important;margin-top:0!important;
 				.ginput_container{
-					input, textarea{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
-						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:#ffe884!important;color:@blue;}
-					}
+					input, textarea{.form-input ();}
 					textarea{.border-radius (@border-radius: 10px);padding-top:25px!important;font-size:22px;
 						&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:@blue!important;color:@blue;}
 					}
@@ -185,8 +317,8 @@ iframe{border:none!important;}
 						label{display:none;}
 					}
 				}
-				.ginput_container_select{border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;background:@white;.bg-clip();padding-left:12px;
-					select{height:60px!important;margin:0!important;font-size:18px;color:@slate1;border:none;background:none;outline:none;width:97%;
+				.ginput_container_select{.form-select-outer ();height:60px;padding-left:12px;
+					select{.form-select (@width: 100%, @height: 60px);
 						option{color:@blue;}
 					}
 					&:focus{background:#fff8db!important;}
@@ -236,32 +368,31 @@ iframe{border:none!important;}
 	}
 }
 
-
-
-
-/*.form-membership{
-	.ms-form-element{margin:0;
-		.wpmui-field-label{display:none;}
-		.wpmui-field-input{padding:18px 25px!important;height:auto!important;margin:0!important;border:3px solid!important;.border-radius (@border-radius: 50px);border-color:rgba(0,0,0,0.05)!important;.bg-clip();font-size:18px!important;color:@slate1;
-			&:focus{outline:none;background:#fff8db!important;.transition();box-shadow:none;border-color:#ffe884!important;color:@blue;}
-		}
-	}
-}
-
-#account-membership, #account-invoices, #account-activity{display:none;}*/
-
-
-
-
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 /* MEDIA QUERIES //////////////////////////////////////////////////////////////////////////////// */
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
+@media only screen and (max-width: 1200px) {
+	
+	.ms-membership-form-wrapper{padding-left:20%;padding-right:20%;}
+
+}
+
+@media only screen and (max-width: 1000px) {
+	
+	.ms-membership-form-wrapper{padding-left:10%;padding-right:10%;}
+
+}
+
 @media only screen and (max-width: 800px) {
+	
+	.ms-membership-form-wrapper{padding-left:40px;padding-right:40px;}
 
 }
 
 @media only screen and (max-width: 500px) {
+	
+	.ms-membership-form-wrapper{padding-left:0;padding-right:0;}
 	
 }
