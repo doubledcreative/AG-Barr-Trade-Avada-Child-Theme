@@ -283,10 +283,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', end
 		#cancel{.agb-small-button();}
 	}
 	.ms-form-element-website{display:none;}
-	.field-3{.form-select-outer ();margin-top:45px;
+	.field-37{.form-select-outer ();margin-top:45px;
 		label{display:none!important;}
 		select{.form-select (@width: 98%, @height: 60px);}
-		&:before{content:"Regions";display:block;width:100%;margin-top:-34px;height:34px;padding-left:24px;font-size:16px;color:@slate1;}
+		&:before{content:"County";display:block;width:100%;margin-top:-34px;height:34px;padding-left:24px;font-size:16px;color:@slate1;}
 	}
 }
 
@@ -357,7 +357,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', end
 
 /* Holding Page Form */
 
-.agb-holding-form{
+.agb-holding-form{padding-left:20%!important;padding-right:20%!important;
+	.fusion-layout-column{padding-left:10%!important;padding-right:10%!important;}
 	.gf_progressbar_wrapper{display:none!important;}
 	.gform_page_footer{margin:0;padding:0;width:100%;border-top:none;
 		input{margin:0 auto!important;font-size:20px!important;line-height:28px!important;padding:16px 60px!important;display:block!important;.border-radius (@border-radius: 60px)!important;border-color:rgba(255,255,255,1)!important;.bg-clip();width:50%!important;
@@ -382,12 +383,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', end
 @media only screen and (max-width: 1000px) {
 	
 	.ms-membership-form-wrapper{padding-left:10%;padding-right:10%;}
+	.agb-holding-form{padding-left:10%!important;padding-right:10%!important;
+		.fusion-layout-column{padding-left:0%!important;padding-right:0%!important;}
+	}
 
 }
 
 @media only screen and (max-width: 800px) {
 	
 	.ms-membership-form-wrapper{padding-left:40px;padding-right:40px;}
+	.agb-logo-container{padding-left:20%!important;padding-right:20%!important;}
+	.agb-holding-form{padding-left:2%!important;padding-right:2%!important;}
 
 }
 
