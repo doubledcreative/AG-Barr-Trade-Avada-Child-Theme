@@ -55,6 +55,12 @@ Contents
 	box-shadow:@box-shadow;
 }
 
+.box-sizing (@box-sizing: border-box) {
+	box-sizing: @border-box;
+	-moz-box-sizing: @border-box;
+	-webkit-box-sizing: @border-box;
+}
+
 .bg-clip(){
 	-moz-background-clip:padding!important;
 	-webkit-background-clip:padding!important;
@@ -68,6 +74,19 @@ Contents
 	background: -moz-linear-gradient(@degree, @startColor, @endColor);
 	background: -ms-linear-gradient(@degree, @startColor, @endColor);
 	background: -o-linear-gradient(@degree, @startColor, @endColor);
+}
+
+.font1(@weight: normal, @size: 18px, @weight: 700) {
+	font-family:"Montserrat", Arial, Helvetica, sans-serif!important;
+	font-weight: @weight!important;
+	font-size: @size!important;
+}
+
+.font2(@weight: normal, @size: 18px, @line-height: 30px) {
+	font-family:"Avenir Next W01", Arial, Helvetica, sans-serif!important;
+	line-height: @line-height;
+	font-weight: @weight;
+	font-size: @size;
 }
 
 .uppercase(){text-transform:uppercase!important;}
@@ -170,8 +189,9 @@ Contents
 
 @white:  	#FFF!important;		/* White                                                          */
 @black:		#000!important;		/* Black                                                          */
-@blue:		#24256E!important;	/* AG Barr Logo Blue                                              */
-@red:		#E2251D!important;	/* AG Barr Red                                                    */
+@blue:		#1b2777!important;	/* AG Barr Logo Blue                                              */
+@blue2:		#0C1864!important;	/* Darker Blue 												      */
+@red:		#ED1B2E!important;	/* AG Barr Red                                                    */
 @grey1:		#F7F7F7!important;
 @grey2:		#EBEBEB!important;
 @slate1:	#58586b!important;
@@ -185,7 +205,7 @@ Contents
 /* Gloabl Styles */
 
 html{background:@grey1;overflow-y:auto!important;}
-body{-webkit-font-smoothing:subpixel-antialiased!important;background:@grey1;}
+body{-webkit-font-smoothing:subpixel-antialiased!important;background:@grey1;.font2()!important;}
 a:hover{.transition (@transition: all 0.2s ease-in-out);}
 .hover-type-zoomin:hover{
 	.fusion-column-inner-bg-image{opacity:1!important;}
@@ -194,6 +214,81 @@ iframe{border:none!important;}
 
 .agb_svg{width:100%;height:auto;}
 .agb-button{margin-top:20px;text-transform:capitalize;}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Header & Navigation */
+
+.fusion-header-wrapper{border-top:10px solid @blue2;border-bottom:5px solid @red;
+	.fusion-header{
+		.fusion-main-menu{
+			ul{
+				li{.uppercase();
+					a{.font1(@weight: normal, @size: 18px, @weight: 700)!important;}
+					.sub-menu{border-top:5px solid @red;
+						li{
+							a{font-size:0.8em!important;}
+						}
+					}
+					.fusion-main-menu-search{font-family:icomoon!important;}
+				}
+			}
+		}
+	}
+}
+
+.fusion-is-sticky{border-top:10px solid @blue2;border-bottom:5px solid @red;}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Fusion Titles */
+
+.fusion-title{
+	h2{.uppercase();}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Fusion Page Title Bar */
+
+.fusion-page-title-bar{border-top:none!important;}
+
+
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* Regions Map */
+
+.agb-map-container{
+	svg{padding:10% 8% 5%;width:100%!important;height:auto!important;}
+	.cls-1, .cls-2, .cls-3{fill:@white!important;stroke:@blue!important;stroke-miterlimit:1!important;stroke-width:0.5px!important;
+		&:hover{fill:@red;}
+	}
+	.cls-3{fill:@grey2;
+		&:hover{fill:@grey2;}
+	}
+	.fusion-title{background:@blue2;margin:0!important;padding:30px 40px 10px;
+		h4{color:@white;.uppercase();}
+	}
+	p{background:@blue2;margin:0;padding:0 40px 35px;color:@white;}
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Sidebar */
+
+.sidebar{padding:0!important;
+	.widget{background:@grey1;border:1px solid @grey2;padding:30px;margin-bottom:20px;}
+	.widget_ipw{padding:0;}
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* MEMBERS ACCOUNTS PAGES */////////////////////////////////////////////////////////////////////////
