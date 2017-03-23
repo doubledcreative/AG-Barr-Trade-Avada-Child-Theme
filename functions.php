@@ -10,8 +10,10 @@ function avada_lang_setup() {
 	load_child_theme_textdomain( 'Avada', $lang );
 }
 add_action( 'after_setup_theme', 'avada_lang_setup' );
+   
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /* Load LESS */
 
@@ -29,24 +31,32 @@ function my_style_loader_tag_function($tag){
   return preg_replace("/='stylesheet' id='less-css'/", "='stylesheet/less' id='less-css'", $tag);
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* Load Fonts dot com */
+
+function extra_css () {
+	wp_register_style( 'font', '//fast.fonts.net/cssapi/d085bc63-d8d8-4667-bef2-acd30315f89e.css' );
+	wp_enqueue_style( 'font' );
+} 
+
+add_action('wp_print_styles', 'extra_css');
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 /* Remove Date from Yoast SEO */
 
 add_filter( 'wpseo_show_date_in_snippet_preview', false);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-add_shortcode( 'divider', 'shortcode_insert_divider' );
-function shortcode_insert_divider( ) {
-return '<div class="divider"></div>';
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /* Remove Dates from SEO on Pages */
-
 
 function wpd_remove_modified_date(){
     if( is_page() ){
@@ -65,7 +75,6 @@ add_action( 'template_redirect', 'wpd_remove_modified_date' );
 
 
 /* Remove Query String */
-
 
 function _remove_script_version( $src ){
   $parsed = parse_url($src);
@@ -90,11 +99,11 @@ function _remove_script_version( $src ){
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 /* Add Field Visibility Section to Gravity Forms */		
-
 		
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
@@ -103,52 +112,20 @@ function init_scripts() {
 return true;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/* Add UK Filter to Gravity Forms */
-
-
-add_filter( 'gform_predefined_choices', 'add_predefined_choice' );
-function add_predefined_choice( $choices ) {
-   $choices['UK Counties'] = array( 'Bedfordshire', 'Buckinghamshire', 'Cambridgeshire', 'Cheshire', 'Cornwall and Isles of Scilly', 'Cumbria', 'Derbyshire', 'Devon', 'Dorset', 'Durham', 'East Sussex', 'Essex', 'Gloucestershire', 'Greater London', 'Greater Manchester', 'Hampshire', 'Hertfordshire', 'Kent', 'Lancashire', 'Leicestershire', 'Lincolnshire', 'London', 'Merseyside', 'Norfolk', 'North Yorkshire', 'Northamptonshire', 'Northumberland', 'Nottinghamshire', 'Oxfordshire', 'Shropshire', 'Somerset', 'South Yorkshire', 'Staffordshire', 'Suffolk', 'Surrey', 'Tyne and Wear', 'Warwickshire', 'West Midlands', 'West Sussex', 'West Yorkshire', 'Wiltshire', 'Worcestershire', 'Flintshire', 'Glamorgan', 'Merionethshire', 'Monmouthshire', 'Montgomeryshire', 'Pembrokeshire', 'Radnorshire', 'Anglesey', 'Breconshire', 'Caernarvonshire', 'Cardiganshire', 'Carmarthenshire', 'Denbighshire', 'Kirkcudbrightshire', 'Lanarkshire', 'Midlothian', 'Moray', 'Nairnshire', 'Orkney', 'Peebleshire', 'Perthshire', 'Renfrewshire', 'Ross & Cromarty', 'Roxburghshire', 'Selkirkshire', 'Shetland', 'Stirlingshire', 'Sutherland', 'West Lothian', 'Wigtownshire', 'Aberdeenshire', 'Angus', 'Argyll', 'Ayrshire', 'Banffshire', 'Berwickshire', 'Bute', 'Caithness', 'Clackmannanshire', 'Dumfriesshire', 'Dumbartonshire', 'East Lothian', 'Fife', 'Inverness', 'Kincardineshire', 'Kinross-shire', 'Other' );
-   return $choices;
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* Membership 2 */		
 
-/*function wpmu_ms_form_placeholder() {
-    ?>
-    <script type="text/javascript">
-    jQuery(function($) {
-         $('#first_name').attr("placeholder", "First Name");
-	     $('#last_name').attr("placeholder", "Surname");
-	     $('#username').attr("placeholder", "Username");
-	     $('#email').attr("placeholder", "Your Email Address");
-	     $('#password').attr("placeholder", "Password");
-	     $('#password2').attr("placeholder", "Verify Password");
+/* SVG Support */	
 
-    });
-    </script>
-    <?php
+
+function bodhi_svgs_disable_real_mime_check( $data, $file, $filename, $mimes ) {
+    $wp_filetype = wp_check_filetype( $filename, $mimes );
+
+    $ext = $wp_filetype['ext'];
+    $type = $wp_filetype['type'];
+    $proper_filename = $data['proper_filename'];
+
+    return compact( 'ext', 'type', 'proper_filename' );
 }
-add_action('wp_footer', 'wpmu_ms_form_placeholder');*/
-
-add_filter('ms_frontend_handle_registration', '__return_false');
-
-add_action( 'gform_user_registered', 'pi_gravity_registration_autologin', 10, 4 );
-
-	function pi_gravity_registration_autologin( $user_id, $user_config, $entry, $password ) {
-	$user = get_userdata( $user_id );
-	$user_login = $user->user_login;
-	$user_password = $password;
-	
-	wp_signon( array(
-	'user_login' => $user_login,
-	'user_password' => $user_password,
-	'remember' => false
-	) );
-}
+add_filter( 'wp_check_filetype_and_ext', 'bodhi_svgs_disable_real_mime_check', 10, 4 );
