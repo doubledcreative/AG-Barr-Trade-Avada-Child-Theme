@@ -189,11 +189,12 @@ Contents
 
 @white:  	#FFF!important;		/* White                                                          */
 @black:		#000!important;		/* Black                                                          */
-@blue:		#1b2777!important;	/* AG Barr Logo Blue                                              */
+@blue:		#1B2777!important;	/* AG Barr Logo Blue                                              */
 @blue2:		#0C1864!important;	/* Darker Blue 												      */
 @red:		#ED1B2E!important;	/* AG Barr Red                                                    */
-@grey1:		#F7F7F7!important;
-@grey2:		#EBEBEB!important;
+@red2:		#CC1021!important;	/* AG Barr Red 2                                                  */
+@grey1:		#F3F4F8!important;
+@grey2:		#E8E9f1!important;
 @slate1:	#58586b!important;
 @yellow1:	#FFF8db!important;	/* Form Focus BG                                                  */
 @yellow2:	#FFE884!important;	/* Form Focus Border                                              */
@@ -219,27 +220,89 @@ iframe{border:none!important;}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/* Header & Navigation */
+/* HEADER & NAVIGATION */
 
-.fusion-header-wrapper{border-top:10px solid @blue2;border-bottom:5px solid @red;
-	.fusion-header{
-		.fusion-main-menu{
+.fusion-header-wrapper{border-bottom:5px solid @grey2;
+	.fusion-header{padding-left:40px;padding-right:40px;
+		.fusion-logo{
+			img{width:100px!important;}
+		}
+		.fusion-main-menu{margin-right:-20px;
 			ul{
 				li{.uppercase();
-					a{.font1(@weight: normal, @size: 18px, @weight: 700)!important;}
-					.sub-menu{border-top:5px solid @red;
+					a{.font2(@weight: normal, @size: 18px, @line-height: 110px)!important;font-weight:800!important;-webkit-font-smoothing:antialiased;
+						.fa{font-size:30px!important;color:@blue;}
+					}
+					.sub-menu{border:1px solid @grey2;border-top-width:5px!important;border-bottom:none!important;
 						li{
-							a{font-size:0.8em!important;}
+							a{font-size:0.8em!important;line-height:22px!important;
+								.fa{font-size:16px!important;}
+								&:hover{background-color:@blue!important;color:@white;
+									.fa{color:@white;}
+								}
+							}
 						}
 					}
-					.fusion-main-menu-search{font-family:icomoon!important;}
+					.current-menu-item, .current_page_item{
+						a{background-color:@grey2!important;}
+					}
+				}
+				.fusion-main-menu-search{
+					a{font-family:icomoon!important;font-size:25px!important;margin-left:-10px;}
+					.fusion-custom-menu-item-contents{border:1px solid @grey2;border-top-width:5px!important;width:330px;padding:20px;
+						.searchform{
+							input{border:1px solid @grey2;.font2(@weight: normal, @size: 16px, @line-height: 16px);color:@blue;height:40px;}
+							input[type=submit]{background:@blue;border:none!important;width:40px;font-family:icomoon!important;color:@white;
+								&:hover{background:@red;}
+							}
+						}
+					}
+				}
+				/* HIDE SPECIFIC MENU ITEMS TO NON LOGGED IN USERS */
+				#menu-item-529{display:none;}
+			}
+		}
+		.fusion-mobile-menu-icons{top:22px;
+			a{font-size:34px;}
+		}
+		.fusion-mobile-nav-holder{
+			.fusion-mobile-nav-item{
+				a{.uppercase();font-weight:800;-webkit-font-smoothing:antialiased;}
+			}
+			.sub-menu{
+				.fusion-mobile-nav-item{
+					a{
+						&:before{display:none!important;}
+						.fusion-megamenu-icon{display:inline-block!important;}
+					}
 				}
 			}
 		}
 	}
 }
 
-.fusion-is-sticky{border-top:10px solid @blue2;border-bottom:5px solid @red;}
+
+/* STICKY HEADER */
+
+.fusion-is-sticky{border-bottom:5px solid @grey2!important;
+	.fusion-header{
+		.fusion-main-menu{
+			ul{
+				li{
+					a{line-height:65px!important;}
+				}
+			}
+		}	
+	}
+}
+
+
+/* MENU ITEMS IF USER IS LOGGED IN */
+
+.logged-in{
+	#menu-item-529{display:inline!important;}
+	#menu-item-530{display:none!important;}
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,8 +322,7 @@ iframe{border:none!important;}
 .fusion-page-title-bar{border-top:none!important;}
 
 
-//
-//////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* Regions Map */
 
@@ -293,6 +355,14 @@ iframe{border:none!important;}
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /* MEMBERS ACCOUNTS PAGES */////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/* MEMBER SHORTCODES POSTS */
+
+.ms-protection-msg{background:#FEBABB;color:#D8000C;padding:40px;border:1px solid #D8000C;margin-bottom:20px;font-weight:bold;}
+
+.ms-user-is-guest{background:@red;color:@white;padding:40px;}
+
 
 /* Hide Membership 2 Elements */
 
@@ -469,10 +539,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', end
 /* ////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
+	
+	.fusion-header-wrapper{
+		.fusion-header{
+			.fusion-main-menu{
+				ul{
+					li{
+						a{padding-left:15px;padding-right:15px;}
+					}
+				}
+			}	
+		}
+	}
+	
 	
 	.ms-membership-form-wrapper{padding-left:20%;padding-right:20%;}
 
+}
+
+@media only screen and (max-width: 1200px) {
+	
+	.fusion-header-wrapper{
+		.fusion-header{padding-left:20px;padding-right:30px;
+			.fusion-main-menu{
+				ul{
+					li{
+						a{padding-left:10px;padding-right:10px;font-size:16px!important;
+							.fa{font-size:26px!important;}
+						}
+					}
+					.fusion-main-menu-search{
+						a{font-size:20px!important;margin-left:0;}
+					}
+				}
+			}	
+		}
+	}
+	
+	
 }
 
 @media only screen and (max-width: 1000px) {
