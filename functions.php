@@ -129,3 +129,5 @@ function bodhi_svgs_disable_real_mime_check( $data, $file, $filename, $mimes ) {
     return compact( 'ext', 'type', 'proper_filename' );
 }
 add_filter( 'wp_check_filetype_and_ext', 'bodhi_svgs_disable_real_mime_check', 10, 4 );
+
+remove_filter('the_content', 'wptexturize');
